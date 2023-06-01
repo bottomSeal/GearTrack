@@ -1,5 +1,6 @@
 package com.example.geartrack.entities;
 
+import com.example.geartrack.models.enums.UserRole;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
@@ -32,6 +33,9 @@ public class UserEntity {
     @Column(nullable = false)
     @Temporal(TemporalType.DATE)
     private LocalDate registerDate;
+
+    @Enumerated(EnumType.STRING)
+    private UserRole userRole;
 
     @OneToMany(mappedBy = "tripOwner", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TripEntity> ownedTrips = new ArrayList<>();
