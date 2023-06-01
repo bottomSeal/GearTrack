@@ -32,7 +32,7 @@ public class ItemEntity {
 
     private String description;
 
-    private boolean collected;
+    private boolean isCollected;
 
     @OneToMany(mappedBy = "item", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TripItemEntity> tripItems = new ArrayList<>();
