@@ -24,16 +24,20 @@ public class TripEntity {
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     private UUID tripId;
 
+    @Column(nullable = false)
     private String name;
 
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private HikingType hikingType;
 
     private String description;
 
+    @Column(nullable = false)
     @Temporal(TemporalType.DATE)
     private LocalDate startDate;
 
+    @Column(nullable = false)
     @Temporal(TemporalType.DATE)
     private LocalDate endDate;
 
