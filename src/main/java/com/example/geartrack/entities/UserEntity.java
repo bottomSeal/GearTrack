@@ -34,6 +34,7 @@ public class UserEntity {
     @Temporal(TemporalType.DATE)
     private LocalDate registerDate;
 
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private UserRole userRole;
 
