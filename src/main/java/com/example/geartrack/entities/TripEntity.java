@@ -45,4 +45,18 @@ public class TripEntity {
     @OneToMany(mappedBy = "trip", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<TripItemEntity> tripItems = new HashSet<>();
 
+    public Set<ItemEntity> getAllItemsForTrip() {
+
+        if (this.tripItems == null) {
+            return null;
+        }
+
+        Set<ItemEntity> items = new HashSet<>();
+        for (TripItemEntity tripItem : this.getTripItems()) {
+            items.add(tripItem.getItem());
+        }
+
+        return items;
+    }
+
 }
