@@ -29,7 +29,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(customizer ->
                         customizer
                                 .requestMatchers(HttpMethod.POST,"auth/register", "auth/login").permitAll()
-                                .requestMatchers("admin/**").hasAuthority("ADMIN")
+                                .requestMatchers("admin/**", "item/create").hasAuthority("ADMIN")
                                 .requestMatchers("error/**").permitAll()
                                 .anyRequest().authenticated()
                 )
