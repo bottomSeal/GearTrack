@@ -14,13 +14,10 @@ public class ItemModel {
 
     private String description;
 
-    private boolean isCollected;
-
     public static ItemModel fromEntity(ItemEntity itemEntity) {
         return ItemModel.builder()
                 .name(itemEntity.getName())
                 .description(itemEntity.getDescription())
-                .isCollected(itemEntity.isCollected())
                 .build();
     }
 
