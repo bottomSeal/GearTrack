@@ -6,9 +6,7 @@ import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 @Table(name = "trips")
@@ -45,6 +43,6 @@ public class TripEntity {
     private UserEntity tripOwner;
 
     @OneToMany(mappedBy = "trip", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<TripItemEntity> tripItems = new ArrayList<>();
+    private Set<TripItemEntity> tripItems = new HashSet<>();
 
 }

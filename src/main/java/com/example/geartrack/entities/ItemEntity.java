@@ -32,6 +32,4 @@ public class ItemEntity {
 
     private String description;
 
-    private boolean isCollected;
-
 }
