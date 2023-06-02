@@ -34,7 +34,4 @@ public class ItemEntity {
 
     private boolean isCollected;
 
-    @OneToMany(mappedBy = "item", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<TripItemEntity> tripItems = new ArrayList<>();
-
 }
