@@ -16,5 +16,4 @@ public class UserRegisterResponse {
     private UUID uuid;
 
     private String token;
-
 }

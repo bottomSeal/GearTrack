@@ -30,7 +30,6 @@ public class UserController {
                 tokenModel.getUserId(),
                 tokenModel.getToken()
         );
-
     }
 
     @PostMapping("/login")
@@ -40,7 +39,6 @@ public class UserController {
         TokenModel tokenModel = userService.login(loginRequest);
 
         return new UserLoginResponse(tokenModel.getEmail(), tokenModel.getToken());
-
     }
 
     @DeleteMapping("/delete")
@@ -49,6 +47,5 @@ public class UserController {
         TokenModel tokenModel = userService.delete();
 
         return new UserDeleteResponse(tokenModel.getEmail());
-
     }
 }
