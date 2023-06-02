@@ -1,10 +1,13 @@
 package com.example.geartrack.models;
 
+import com.example.geartrack.entities.ItemEntity;
 import com.example.geartrack.entities.TripEntity;
 import com.example.geartrack.models.enums.HikingType;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.Set;
+import java.util.UUID;
 
 @Data
 @AllArgsConstructor
@@ -23,6 +26,10 @@ public class TripModel {
 
     private LocalDate endDate;
 
+    private UUID tripId;
+
+    private Set<ItemEntity> items;
+
     public static TripModel fromEntity(TripEntity tripEntity) {
         return TripModel.builder()
                 .name(tripEntity.getName())
@@ -30,6 +37,8 @@ public class TripModel {
                 .hikingType(tripEntity.getHikingType())
                 .startDate(tripEntity.getStartDate())
                 .endDate(tripEntity.getEndDate())
+                .tripId(tripEntity.getTripId())
+                .items(tripEntity.getAllItemsForTrip())
                 .build();
     }
 }
