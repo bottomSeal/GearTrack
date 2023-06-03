@@ -11,6 +11,7 @@ import java.util.*;
 @Entity
 @Table(name = "trips")
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
@@ -58,5 +59,4 @@ public class TripEntity {
 
         return items;
     }
-
 }
