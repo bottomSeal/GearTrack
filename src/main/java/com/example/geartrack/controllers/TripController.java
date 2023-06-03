@@ -1,8 +1,10 @@
 package com.example.geartrack.controllers;
 
+import com.example.geartrack.entities.TripEntity;
 import com.example.geartrack.messages.requests.TripCreateRequest;
 import com.example.geartrack.messages.response.TripCreateResponse;
 import com.example.geartrack.messages.response.TripDeleteResponse;
+import com.example.geartrack.messages.response.TripGetAllResponse;
 import com.example.geartrack.messages.response.TripGetResponse;
 import com.example.geartrack.models.TripModel;
 import com.example.geartrack.services.TripService;
@@ -10,11 +12,12 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
 @Slf4j
-@RequestMapping("/trip")
+@RequestMapping("/trips")
 @RequiredArgsConstructor
 public class TripController {
 
@@ -33,8 +36,10 @@ public class TripController {
                 .endDate(tripModel.getEndDate())
                 .hikingType(tripModel.getHikingType())
                 .tripId(tripModel.getTripId())
+                .items(tripModel.getItems())
                 .build();
     }
+
 
     @GetMapping("/{tripId}")
     public TripGetResponse get(@PathVariable UUID tripId){
@@ -52,6 +57,15 @@ public class TripController {
                 .items(tripModel.getItems())
                 .build();
     }
+
+
+    @GetMapping()
+    public TripGetAllResponse getAll() {
+        log.info("Get all trips");
+
+        return new TripGetAllResponse(tripService.getAll());
+    }
+
 
     @DeleteMapping("/delete/{tripId}")
     public TripDeleteResponse delete(@PathVariable UUID tripId){
