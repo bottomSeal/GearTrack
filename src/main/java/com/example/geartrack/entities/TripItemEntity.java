@@ -9,6 +9,7 @@ import java.util.UUID;
 @Entity
 @Table(name = "trip_items")
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
@@ -27,8 +28,5 @@ public class TripItemEntity {
     @ManyToOne
     @JoinColumn(name = "item_id")
     private ItemEntity item;
-
-    private boolean isCollected;
-
 }
 
