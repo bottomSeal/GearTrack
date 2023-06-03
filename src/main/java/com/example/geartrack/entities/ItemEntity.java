@@ -19,7 +19,7 @@ public class ItemEntity {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    private UUID tripId;
+    private UUID itemId;
 
     @Column(unique = true, nullable = false)
     private String name;
@@ -30,4 +30,5 @@ public class ItemEntity {
 
     private String description;
 
+    private boolean isCollected;
 }
