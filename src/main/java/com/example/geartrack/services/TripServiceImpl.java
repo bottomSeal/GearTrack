@@ -34,9 +34,7 @@ public class TripServiceImpl implements TripService{
     @Override
     public TripModel create(TripCreateRequest tripCreateRequest) {
 
-        return TripModel.fromEntity(tripDao
-                .createTripWithItems(
-                        tripDao.create(tripCreateRequest, getUserFromContext())));
+        return TripModel.fromEntity(tripDao.create(tripCreateRequest, getUserFromContext()));
     }
 
     @Override
