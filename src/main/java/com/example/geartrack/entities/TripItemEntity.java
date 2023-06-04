@@ -28,5 +28,7 @@ public class TripItemEntity {
     @ManyToOne
     @JoinColumn(name = "item_id")
     private ItemEntity item;
+
+    private boolean isCollected;
 }
 
