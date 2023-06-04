@@ -26,7 +26,7 @@ public class TripItemController {
     }
 
     @PatchMapping("/collect")
-    public void collect(CollectItemRequest itemRequest) {
+    public void collect(@RequestBody CollectItemRequest itemRequest) {
         log.info(itemRequest.toString());
 
         tripItemService.collect(itemRequest);

@@ -42,25 +42,29 @@ public class TripItemDao {
     @Transactional
     public List<ItemEntity> createItemListForTrip(UUID tripId, UserEntity user) {
 
-        TripEntity trip = tripRepository.findByTripIdAndTripOwner(tripId, user).orElseThrow();
+        TripEntity savedTrip = tripRepository.findByTripIdAndTripOwner(tripId, user).orElseThrow();
 
-        List<ItemEntity> items = itemRepository.findByHikingType(trip.getHikingType());
+        List<ItemEntity> items = itemRepository.findByHikingType(savedTrip.getHikingType());
 
         Set<TripItemEntity> tripItems = new HashSet<>();
         for (ItemEntity item : items) {
-            TripItemEntity tripItem = new TripItemEntity();
-            tripItem.setTrip(trip);
-            tripItem.setItem(item);
-            tripItem.setCollected(false);
+            TripItemEntity tripItem = tripItemRepository.save(
+                    TripItemEntity.builder()
+                            .trip(savedTrip)
+                            .item(item)
+                            .isCollected(false)
+                            .build());
+
             tripItems.add(tripItem);
         }
 
-        trip.setTripItems(tripItems);
+        savedTrip.getTripItems().removeIf(tripItem -> !tripItems.contains(tripItem));
 
-        tripRepository.save(trip);
+        TripEntity trip = tripRepository.save(savedTrip);
 
-        return this.getItemsForTrip(tripId, user);
+        return this.getItemsForTrip(trip.getTripId(), user);
     }
+
 
     @Transactional
     public void collectItem(UUID tripId, UUID itemId, UserEntity user) {
