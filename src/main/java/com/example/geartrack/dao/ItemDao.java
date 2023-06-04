@@ -7,6 +7,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+
 @Component
 @RequiredArgsConstructor
 public class ItemDao {
@@ -22,4 +23,5 @@ public class ItemDao {
                 .hikingType(request.getHikingType())
                 .build());
     }
+
 }

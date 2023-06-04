@@ -12,7 +12,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -36,7 +35,6 @@ public class TripController {
                 .endDate(tripModel.getEndDate())
                 .hikingType(tripModel.getHikingType())
                 .tripId(tripModel.getTripId())
-                .items(tripModel.getItems())
                 .build();
     }
 
@@ -54,7 +52,6 @@ public class TripController {
                 .startDate(tripModel.getStartDate())
                 .endDate(tripModel.getEndDate())
                 .hikingType(tripModel.getHikingType())
-                .items(tripModel.getItems())
                 .build();
     }
 
