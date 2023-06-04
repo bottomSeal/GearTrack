@@ -1,6 +1,5 @@
 package com.example.geartrack.controllers;
 
-import com.example.geartrack.entities.TripEntity;
 import com.example.geartrack.messages.requests.TripCreateRequest;
 import com.example.geartrack.messages.response.TripCreateResponse;
 import com.example.geartrack.messages.response.TripDeleteResponse;

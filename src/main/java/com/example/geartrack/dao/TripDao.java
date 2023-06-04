@@ -1,19 +1,14 @@
 package com.example.geartrack.dao;
 
-import com.example.geartrack.entities.ItemEntity;
 import com.example.geartrack.entities.TripEntity;
-import com.example.geartrack.entities.TripItemEntity;
 import com.example.geartrack.entities.UserEntity;
 import com.example.geartrack.messages.requests.TripCreateRequest;
-import com.example.geartrack.repositories.ItemRepository;
 import com.example.geartrack.repositories.TripRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.UUID;
 
 
