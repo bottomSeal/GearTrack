@@ -23,8 +23,6 @@ public class TripDao {
 
     private final TripRepository tripRepository;
 
-    private final ItemRepository itemRepository;
-
     @Transactional
     public TripEntity create(TripCreateRequest request, UserEntity tripOwner) {
 
