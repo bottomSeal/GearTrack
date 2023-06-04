@@ -1,6 +1,5 @@
 package com.example.geartrack.messages.response;
 
-import com.example.geartrack.entities.ItemEntity;
 import com.example.geartrack.models.enums.HikingType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,7 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.util.Set;
 import java.util.UUID;
 
 @Data
@@ -28,6 +26,4 @@ public class TripCreateResponse {
     private LocalDate endDate;
 
     private UUID tripId;
-
-    private Set<ItemEntity> items;
 }
