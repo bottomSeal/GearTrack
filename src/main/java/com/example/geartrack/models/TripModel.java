@@ -28,8 +28,6 @@ public class TripModel {
 
     private UUID tripId;
 
-    private Set<ItemEntity> items;
-
     public static TripModel fromEntity(TripEntity tripEntity) {
         return TripModel.builder()
                 .name(tripEntity.getName())
@@ -38,7 +36,6 @@ public class TripModel {
                 .startDate(tripEntity.getStartDate())
                 .endDate(tripEntity.getEndDate())
                 .tripId(tripEntity.getTripId())
-                .items(tripEntity.getAllItemsForTrip())
                 .build();
     }
 }

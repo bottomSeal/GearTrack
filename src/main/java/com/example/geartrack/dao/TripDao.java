@@ -38,25 +38,6 @@ public class TripDao {
                 .build());
     }
 
-    @Transactional
-    public TripEntity createTripWithItems(TripEntity tripEntity) {
-        TripEntity savedTrip = tripRepository.save(tripEntity);
-
-        List<ItemEntity> items = itemRepository.findByHikingType(tripEntity.getHikingType());
-
-        Set<TripItemEntity> tripItems = new HashSet<>();
-        for (ItemEntity item : items) {
-            TripItemEntity tripItem = new TripItemEntity();
-            tripItem.setTrip(savedTrip);
-            tripItem.setItem(item);
-            tripItems.add(tripItem);
-        }
-
-        savedTrip.setTripItems(tripItems);
-
-        return tripRepository.save(savedTrip);
-    }
-
     public TripEntity get(UUID tripId, UserEntity tripOwner) {
 
         return tripRepository.findByTripIdAndTripOwner(tripId, tripOwner).orElseThrow();
