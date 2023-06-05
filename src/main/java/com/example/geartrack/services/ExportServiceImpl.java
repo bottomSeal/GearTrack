@@ -1,6 +1,5 @@
 package com.example.geartrack.services;
 
-import com.example.geartrack.dao.ItemDao;
 import com.example.geartrack.dao.TripDao;
 import com.example.geartrack.dao.TripItemDao;
 import com.example.geartrack.dao.UserDao;
@@ -13,16 +12,13 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType0Font;
-import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.xssf.usermodel.XSSFRichTextString;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
@@ -61,12 +57,12 @@ public class ExportServiceImpl implements ExportService{
             row.createCell(3).setCellValue("Собрано");
 
             for (int i = 0; i < items.size(); i++) {
-                Row row_ = sheet.createRow(i + 1);
+                Row itemRow = sheet.createRow(i + 1);
 
-                row_.createCell(0).setCellValue(i);
-                row_.createCell(1).setCellValue(items.get(i).getName());
-                row_.createCell(2).setCellValue(items.get(i).getDescription());
-                row_.createCell(3).setCellValue(items.get(i).isCollected());
+                itemRow.createCell(0).setCellValue(i);
+                itemRow.createCell(1).setCellValue(items.get(i).getName());
+                itemRow.createCell(2).setCellValue(items.get(i).getDescription());
+                itemRow.createCell(3).setCellValue(items.get(i).isCollected());
             }
 
             File tempFile = File.createTempFile("temp", ".xlsx");
@@ -91,7 +87,8 @@ public class ExportServiceImpl implements ExportService{
         document.addPage(page);
 
         try (PDPageContentStream contentStream = new PDPageContentStream(document, page)) {
-            PDType0Font font = PDType0Font.load(document, new File("c:/windows/fonts/arial.ttf"));
+            String pathToFont = "c:/windows/fonts/arial.ttf";
+            PDType0Font font = PDType0Font.load(document, new File(pathToFont));
             contentStream.setFont(font, 12);
             contentStream.beginText();
             contentStream.newLineAtOffset(25, 700);
