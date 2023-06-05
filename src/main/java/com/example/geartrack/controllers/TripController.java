@@ -7,8 +7,11 @@ import com.example.geartrack.messages.response.TripGetAllResponse;
 import com.example.geartrack.messages.response.TripGetResponse;
 import com.example.geartrack.models.TripModel;
 import com.example.geartrack.services.TripService;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -22,7 +25,7 @@ public class TripController {
     private final TripService tripService;
 
     @PostMapping("/create")
-    public TripCreateResponse create(@RequestBody TripCreateRequest createRequest){
+    public TripCreateResponse create(@Valid @RequestBody TripCreateRequest createRequest){
         log.info(createRequest.toString());
 
         TripModel tripModel = tripService.create(createRequest);

@@ -7,6 +7,7 @@ import com.example.geartrack.messages.response.UserLoginResponse;
 import com.example.geartrack.messages.response.UserRegisterResponse;
 import com.example.geartrack.models.TokenModel;
 import com.example.geartrack.services.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +21,7 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("/register")
-    public UserRegisterResponse register(@RequestBody UserRegisterRequest registerRequest){
+    public UserRegisterResponse register(@Valid @RequestBody UserRegisterRequest registerRequest){
         log.info(registerRequest.toString());
 
         TokenModel tokenModel = userService.register(registerRequest);
@@ -33,7 +34,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public UserLoginResponse login(@RequestBody UserLoginRequest loginRequest){
+    public UserLoginResponse login(@Valid @RequestBody UserLoginRequest loginRequest){
         log.info(loginRequest.toString());
 
         TokenModel tokenModel = userService.login(loginRequest);

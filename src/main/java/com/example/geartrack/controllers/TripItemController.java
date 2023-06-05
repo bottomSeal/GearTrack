@@ -4,8 +4,11 @@ import com.example.geartrack.messages.requests.CollectItemRequest;
 import com.example.geartrack.messages.response.FindItemResponse;
 import com.example.geartrack.messages.response.ItemListResponse;
 import com.example.geartrack.services.TripItemService;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -14,6 +17,7 @@ import java.util.UUID;
 @Slf4j
 @RequestMapping("/trips_item")
 @RequiredArgsConstructor
+@Validated
 public class TripItemController {
 
     private final TripItemService tripItemService;
@@ -26,7 +30,7 @@ public class TripItemController {
     }
 
     @PatchMapping("/collect")
-    public void collect(@RequestBody CollectItemRequest itemRequest) {
+    public void collect(@Valid @RequestBody CollectItemRequest itemRequest) {
         log.info(itemRequest.toString());
 
         tripItemService.collect(itemRequest);
@@ -40,7 +44,7 @@ public class TripItemController {
     }
 
     @GetMapping("/{tripId}/search")
-    public FindItemResponse searchByName(@PathVariable UUID tripId, @RequestParam("name") String name) {
+    public FindItemResponse searchByName(@PathVariable UUID tripId, @RequestParam("name") @NotBlank String name) {
         log.info("Find item in trip: " + tripId + "items with name: " + name);
 
         return new FindItemResponse(tripItemService.findItem(tripId, name));

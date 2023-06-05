@@ -40,6 +40,4 @@ public class UserEntity {
 
     @OneToMany(mappedBy = "tripOwner", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TripEntity> ownedTrips = new ArrayList<>();
-
-
 }
