@@ -1,6 +1,5 @@
 package com.example.geartrack.services;
 
-import com.example.geartrack.dao.TripDao;
 import com.example.geartrack.dao.TripItemDao;
 import com.example.geartrack.dao.UserDao;
 import com.example.geartrack.entities.ItemEntity;
@@ -25,8 +24,6 @@ public class TripItemServiceImpl implements TripItemService{
     private final TripItemDao tripItemDao;
 
     private final UserDao userDao;
-
-    private final TripDao tripDao;
 
     private UserEntity getUserFromContext() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
