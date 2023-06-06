@@ -29,7 +29,7 @@ public class TripItemController {
         return new ItemListResponse(tripItemService.create(tripId));
     }
 
-    @PatchMapping("/collect")
+    @PutMapping("/collect")
     public void collect(@Valid @RequestBody CollectItemRequest itemRequest) {
         log.info(itemRequest.toString());
 
