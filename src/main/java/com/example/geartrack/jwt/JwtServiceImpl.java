@@ -26,7 +26,7 @@ public class JwtServiceImpl implements JwtService {
         return Jwts.builder()
                 .setSubject(userModel.getEmail())
                 .setIssuedAt(Date.from(Instant.now()))
-                .setExpiration(Date.from(Instant.now().plusSeconds(600)))
+                .setExpiration(Date.from(Instant.now().plusSeconds(3600)))
                 .claim("userRole", userModel.getUserRole())
                 .signWith(getSigningKey(), SIGNATURE_ALGORITHM)
                 .compact();
