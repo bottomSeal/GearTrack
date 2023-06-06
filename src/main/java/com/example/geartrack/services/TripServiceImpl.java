@@ -28,7 +28,7 @@ public class TripServiceImpl implements TripService{
     private UserEntity getUserFromContext() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-        return userDao.getUserByEmail(authentication.getName());
+        return userDao.getUserByEmail((String) authentication.getPrincipal());
     }
 
     @Override

@@ -38,7 +38,7 @@ public class ExportServiceImpl implements ExportService{
     private UserEntity getUserFromContext() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-        return userDao.getUserByEmail(authentication.getName());
+        return userDao.getUserByEmail((String) authentication.getPrincipal());
     }
 
     @Override

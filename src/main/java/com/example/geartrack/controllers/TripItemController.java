@@ -33,8 +33,6 @@ public class TripItemController {
     public ItemListResponse collect(@Valid @RequestBody CollectItemRequest itemRequest) {
         log.info(itemRequest.toString());
 
-        tripItemService.collect(itemRequest);
-
         return new ItemListResponse(tripItemService.collect(itemRequest));
     }
 
@@ -47,7 +45,7 @@ public class TripItemController {
 
     @GetMapping("/{tripId}/search")
     public FindItemResponse searchByName(@PathVariable UUID tripId, @RequestParam("name") @NotBlank String name) {
-        log.info("Find item in trip: " + tripId + "items with name: " + name);
+        log.info("Find item in trip: " + tripId + " items with name: " + name);
 
         return new FindItemResponse(tripItemService.findItem(tripId, name));
     }
