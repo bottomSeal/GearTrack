@@ -39,7 +39,11 @@ public class UserController {
 
         TokenModel tokenModel = userService.login(loginRequest);
 
-        return new UserLoginResponse(tokenModel.getEmail(), tokenModel.getToken());
+        return new UserLoginResponse(
+                tokenModel.getEmail(),
+                tokenModel.getToken(),
+                tokenModel.getUserId()
+        );
     }
 
     @DeleteMapping("/delete")
