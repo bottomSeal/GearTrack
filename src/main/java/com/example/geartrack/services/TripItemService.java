@@ -10,7 +10,7 @@ public interface TripItemService {
 
     List<ItemModel> create(UUID tripId);
 
-    void collect(CollectItemRequest itemRequest);
+    List<ItemModel> collect(CollectItemRequest itemRequest);
 
     List<ItemModel> getItems(UUID tripId);
 

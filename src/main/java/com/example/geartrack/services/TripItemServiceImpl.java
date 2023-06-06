@@ -54,9 +54,11 @@ public class TripItemServiceImpl implements TripItemService{
     }
 
     @Override
-    public void collect(CollectItemRequest itemRequest) {
+    public List<ItemModel> collect(CollectItemRequest itemRequest) {
 
         tripItemDao.collectItem(itemRequest.getTripId(), itemRequest.getItemId(), getUserFromContext());
+
+        return this.getItems(itemRequest.getTripId());
     }
 
     @Override

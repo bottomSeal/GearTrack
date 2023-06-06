@@ -30,10 +30,12 @@ public class TripItemController {
     }
 
     @PutMapping("/collect")
-    public void collect(@Valid @RequestBody CollectItemRequest itemRequest) {
+    public ItemListResponse collect(@Valid @RequestBody CollectItemRequest itemRequest) {
         log.info(itemRequest.toString());
 
         tripItemService.collect(itemRequest);
+
+        return new ItemListResponse(tripItemService.collect(itemRequest));
     }
 
     @GetMapping("/{tripId}")
