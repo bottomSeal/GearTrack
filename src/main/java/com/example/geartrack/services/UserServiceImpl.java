@@ -65,7 +65,7 @@ public class UserServiceImpl implements UserService{
 
         UserModel user = UserModel.fromEntity(userDao.getUserByEmail(loginRequest.getEmail()));
 
-        return new TokenModel(user.getEmail(), jwtService.generateToken(user), null);
+        return new TokenModel(user.getEmail(), jwtService.generateToken(user), user.getUserId());
     }
 
     @Override

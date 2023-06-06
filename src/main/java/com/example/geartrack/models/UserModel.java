@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.UUID;
 
 @Data
 @AllArgsConstructor
@@ -23,11 +24,14 @@ public class UserModel implements UserDetails {
 
     private UserRole userRole;
 
+    private UUID userId;
+
     public static UserModel fromEntity(UserEntity userEntity){
         return new UserModel(
                 userEntity.getEmail(),
                 userEntity.getPassword(),
-                userEntity.getUserRole()
+                userEntity.getUserRole(),
+                userEntity.getUserId()
         );
     }
 
