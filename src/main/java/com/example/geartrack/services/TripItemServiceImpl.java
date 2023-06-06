@@ -28,7 +28,7 @@ public class TripItemServiceImpl implements TripItemService{
     private UserEntity getUserFromContext() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-        return userDao.getUserByEmail(authentication.getName());
+        return userDao.getUserByEmail((String) authentication.getPrincipal());
     }
 
     private List<ItemModel> fromEntityArrayToModelArray(List<ItemEntity> items) {
