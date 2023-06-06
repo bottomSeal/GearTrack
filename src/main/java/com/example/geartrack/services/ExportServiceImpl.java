@@ -17,11 +17,14 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.yaml.snakeyaml.Yaml;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @Service
@@ -75,6 +78,21 @@ public class ExportServiceImpl implements ExportService{
         }
     }
 
+    private String getPathToFont() {
+
+        Yaml yaml = new Yaml();
+        try (InputStream inputStream = getClass().getResourceAsStream("/config.yaml")) {
+            Map<String, Object> config = yaml.load(inputStream);
+            return (String) config.get("font.path");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+
     @Override
     public File getPDFFile(UUID tripId) throws IOException {
 
@@ -87,7 +105,12 @@ public class ExportServiceImpl implements ExportService{
         document.addPage(page);
 
         try (PDPageContentStream contentStream = new PDPageContentStream(document, page)) {
-            String pathToFont = "c:/windows/fonts/arial.ttf";
+            String pathToFont = getPathToFont();
+
+            if (pathToFont == null) {
+                throw new IllegalStateException("Path to font is null");
+            }
+
             PDType0Font font = PDType0Font.load(document, new File(pathToFont));
             contentStream.setFont(font, 12);
             contentStream.beginText();
