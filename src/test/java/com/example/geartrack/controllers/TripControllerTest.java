@@ -2,7 +2,6 @@ package com.example.geartrack.controllers;
 
 import com.example.geartrack.messages.requests.TripCreateRequest;
 import com.example.geartrack.messages.response.*;
-import com.example.geartrack.models.TripModel;
 import com.example.geartrack.models.enums.HikingType;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.*;
@@ -17,7 +16,7 @@ import java.util.UUID;
 @SpringBootTest
 @Slf4j
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class TripControllerTest {
+class TripControllerTest {
 
     @Autowired
     private TripController tripController;
@@ -70,7 +69,7 @@ public class TripControllerTest {
 
         Assertions.assertNotNull(tripGetResponse);
 
-        Assertions.assertEquals(tripGetResponse.getName(), "Алтай");
+        Assertions.assertEquals("Алтай", tripGetResponse.getName());
     }
 
     @Test
@@ -83,6 +82,6 @@ public class TripControllerTest {
 
         Assertions.assertNotNull(tripDeleteResponse);
 
-        Assertions.assertEquals(tripDeleteResponse.getName(), "Алтай");
+        Assertions.assertEquals("Алтай", tripDeleteResponse.getName());
     }
 }

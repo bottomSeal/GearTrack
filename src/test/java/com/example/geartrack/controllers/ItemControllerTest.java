@@ -17,7 +17,7 @@ import static com.example.geartrack.models.enums.HikingType.ALL;
 
 @SpringBootTest
 @Slf4j
-public class ItemControllerTest {
+class ItemControllerTest {
 
     @Autowired
     private ItemController itemController;

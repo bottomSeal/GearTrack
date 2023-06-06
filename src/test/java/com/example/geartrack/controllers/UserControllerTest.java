@@ -15,7 +15,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 @SpringBootTest
 @Slf4j
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class UserControllerTest {
+class UserControllerTest {
 
     @Autowired
     private UserController userController;

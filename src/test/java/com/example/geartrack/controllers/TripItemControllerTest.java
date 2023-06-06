@@ -1,11 +1,9 @@
 package com.example.geartrack.controllers;
 
-import com.example.geartrack.dao.TripDao;
 import com.example.geartrack.messages.requests.CollectItemRequest;
 import com.example.geartrack.messages.requests.TripCreateRequest;
 import com.example.geartrack.messages.response.FindItemResponse;
 import com.example.geartrack.messages.response.ItemListResponse;
-import com.example.geartrack.messages.response.TripCreateResponse;
 import com.example.geartrack.models.ItemModel;
 import com.example.geartrack.models.TripModel;
 import com.example.geartrack.models.enums.HikingType;
@@ -24,7 +22,7 @@ import java.util.UUID;
 @SpringBootTest
 @Slf4j
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class TripItemControllerTest {
+class TripItemControllerTest {
 
     @Autowired
     private TripItemController tripItemController;
@@ -97,6 +95,6 @@ public class TripItemControllerTest {
 
         Assertions.assertNotNull(findItemResponse);
 
-        Assertions.assertEquals(findItemResponse.getItem().getName(), "КЛМН");
+        Assertions.assertEquals("КЛМН", findItemResponse.getItem().getName());
     }
 }
