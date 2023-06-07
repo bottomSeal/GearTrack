@@ -16,5 +16,4 @@ public class TokenModel {
     private String token;
 
     private UUID userId;
-
 }

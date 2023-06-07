@@ -1,12 +1,10 @@
 package com.example.geartrack.models;
 
-import com.example.geartrack.entities.ItemEntity;
 import com.example.geartrack.entities.TripEntity;
 import com.example.geartrack.models.enums.HikingType;
 import lombok.*;
 
 import java.time.LocalDate;
-import java.util.Set;
 import java.util.UUID;
 
 @Data
