@@ -79,17 +79,17 @@ public class ExportServiceImpl implements ExportService{
     }
 
     private String getPathToFont() {
-
         Yaml yaml = new Yaml();
+        String fontPath = null;
+
         try (InputStream inputStream = getClass().getResourceAsStream("/config.yaml")) {
             Map<String, Object> config = yaml.load(inputStream);
-            return (String) config.get("font.path");
-
+            fontPath = (String) config.get("fontPath");
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return null;
+        return fontPath;
     }
 
 
